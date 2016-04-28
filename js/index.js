@@ -1,8 +1,4 @@
-/* jshint browser: true, jquery: true, curly: true, eqeqeq: true, forin: true, immed: true, indent: 4, latedef: true, newcap: true, nonew: true, quotmark: double, undef: true, unused: true, strict: true, trailing: true */
-//GLYPHICONS Halflings font is also released as an extension of a Bootstrap www.getbootstrap.com for free and it is released under the same license as Bootstrap.
-//Thank you to GLYPHICONS.com for GLYPHICONS Halflings
-///www.pexels.com/search/people/ All these free images of people can be used according to the Creative Commons Zero (CC0) 
-var $currentUser = ""; 
+var $currentUser = "";
 
 $(document).ready(function() {
   "use strict";
@@ -73,11 +69,6 @@ $(document).ready(function() {
     $("#registerSignIn").modal();
   });
 
-  $("#createBlackmail").click(function() {
-    $("#randomCode").val(randomString(32, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
-    $("#creator").val($currentUser);
-    $("#createModal").modal();
-  });
 
 
   $("#create-form").submit(function() {
@@ -107,10 +98,6 @@ $(document).ready(function() {
     });
   });
 
-  $("#viewBlackmail").click(function() {
-    makeMyBlackmails();
-  });
-
   $("#signinButton").click(function() {
     var signinData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));//converts form data to associative array
       $.get("http://localhost:3000/accounts", {"username": signinData.email,"password": signinData.password}, function(data) {
@@ -136,35 +123,7 @@ $(document).ready(function() {
       });
   });
 
-  $("#viewCodeBlackmail").click(function() {
-    $.get("http://localhost:3000/blackmails", {"randomCode": $("#mycode").val()}, function(data) {
-        if(data.length > 0){
-          showSingleBlackmail(data[0].id);
-        }
-        else{
-          alert("Something happened please try again!");
-        }
-    });
-  });
 
-  $("#upload").click(function() {
-    var fileInput = document.getElementById("image");
-    var file = fileInput.files[0];
-    var formData = new FormData();
-    formData.append("file", file);
-
-    console.log(file);
-    $.ajax({
-      type: "POST",
-      url: "/upload",
-      processData: false,
-      contentType: false,
-      data: {"image" : file},
-      success: function (response, textStatus, jqXHR){
-        console.log(response);
-      }
-    });
-  });
 
   $("#logOut").click(function() {
     $currentUser = "";
@@ -177,12 +136,11 @@ $(document).ready(function() {
     makeGallery();
   });
 
-  $("#brand").click(function() {
-    makeGallery();
+  $("#brand").click(function() {//clicking on title
+
   });
 
   $("#home").click(function() {
-    makeGallery();
   });
 
   $("#about").click(function() {
@@ -191,10 +149,10 @@ $(document).ready(function() {
 
   function showAbout(){
     $("#mainHeader").empty().append('<span class="glyphicon glyphicon-glass" aria-hidden="true"></span> About');
-    $("#blackmailDisp").empty();
+    $("#centerDisp").empty();
     var $aboutContents ='<div>Hello!<br><br>BlackmailPhotos offers a great and easy way to extort your friends, family, coworkers, employers, and even yourself!</div>';
 
-    $("#blackmailDisp").append($aboutContents);
+    $("#centerDisp").append($aboutContents);
   }
 
   $("#contact").click(function() {
@@ -203,20 +161,20 @@ $(document).ready(function() {
 
   function showContact(){
     $("#mainHeader").empty().append('<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> Contact');
-    $("#blackmailDisp").empty();
+    $("#centerDisp").empty();
     var $contactInfo ="<div>Please address all complaints and legal threats to:<br><br>";
     $contactInfo += "Former Vice President Dick Cheney<br>";
     $contactInfo += "The American Enterprise Institute<br>";
     $contactInfo += "1150 Seventeenth Street, N.W.<br>";
     $contactInfo += "Washington, DC 20036</div>";
 
-    $("#blackmailDisp").append($contactInfo);
+    $("#centerDisp").append($contactInfo);
   }
 
   function makeGallery(){
       $.get("http://localhost:3000/blackmails", function(data) {
       $("#mainHeader").empty().append('<span class="glyphicon glyphicon-envelope " aria-hidden="true"></span> Released Blackmail Photos');
-      $("#blackmailDisp").empty();
+      $("#centerDisp").empty();
       if (data.length > 0){
         for(var i = 0; i < data.length; i++)
         {
@@ -254,12 +212,12 @@ $(document).ready(function() {
             $singleMail += '<li class="list-group-item"><b>Recipient Email</b>: '+data[i].recEmail;
             $singleMail += '<li class="list-group-item"><b>Release Date</b>: '+data[i].date;
             $singleMail += '<li class="list-group-item"><b>Release Time</b>: '+data[i].time;
-            $("#blackmailDisp").append($singleMail);
+            $("#centerDisp").append($singleMail);
           }
         }
       }
       else{
-          $("#blackmailDisp").append('<h1 style="color:red">No Current Blackmails Found');
+          $("#centerDisp").append('<h1 style="color:red">No Current Blackmails Found');
       }
 
     });
@@ -270,7 +228,7 @@ $(document).ready(function() {
 function makeMyBlackmails(){
       $.get("http://localhost:3000/blackmails", {"creator": $currentUser}, function(data) {
       $("#mainHeader").empty().append('<span class="glyphicon glyphicon-envelope " aria-hidden="true"></span> Your Blackmails');
-      $("#blackmailDisp").empty();
+      $("#centerDisp").empty();
       if (data.length > 0){
         for(var i = 0; i < data.length; i++)
         {
@@ -292,11 +250,11 @@ function makeMyBlackmails(){
           $singleMail += '<li class="list-group-item"><b>Release Time</b>: '+data[i].time;
           $singleMail += '<li class="list-group-item"><b>Delete Blackmail? </b>';
           $singleMail += '<button id="delete" type="button" onclick ="deleteBlackmail('+data[i].id+')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-trash" style="color:blue" aria-hidden="true"></span>';
-          $("#blackmailDisp").append($singleMail);
+          $("#centerDisp").append($singleMail);
         }
       }
       else{
-          $("#blackmailDisp").append('<h1 style="color:red">No Current Blackmails Found');
+          $("#centerDisp").append('<h1 style="color:red">No Current Blackmails Found');
       }
 
     });
@@ -305,7 +263,7 @@ function makeMyBlackmails(){
 function showGalleryBlackmail($id) {
   $.get("http://localhost:3000/blackmails", {"id": $id}, function(data) {
     $("#mainHeader").empty().append('<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>' + data[0].title);
-    $("#blackmailDisp").empty();
+    $("#centerDisp").empty();
     var $singleBlackmailPage = '';
     $singleBlackmailPage += '<h1 class="col-md-12" style="color:red;font-size: 75px;">Photo Released</h1>';
     $singleBlackmailPage +='<div class="col-md-12"><img class="thumbnail img-responsive" src="/upload/'+data[0].url+'.jpg" alt=""></div>';
@@ -315,14 +273,14 @@ function showGalleryBlackmail($id) {
     $singleBlackmailPage += '<li class="list-group-item"><b>Recipient Email</b>: '+data[0].recEmail;
     $singleBlackmailPage += '<li class="list-group-item"><b>Release Date</b>: '+data[0].date;
     $singleBlackmailPage += '<li class="list-group-item"><b>Release Time</b>: '+data[0].time;
-    $("#blackmailDisp").append($singleBlackmailPage);
+    $("#centerDisp").append($singleBlackmailPage);
   });
 }
 
 function showSingleBlackmail($id) {
   $.get("http://localhost:3000/blackmails", {"id": $id}, function(data) {
     $("#mainHeader").empty().append('<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>' + data[0].title);
-    $("#blackmailDisp").empty();
+    $("#centerDisp").empty();
 
     var $deadline = data[0].date;
     var $timeCon = data[0].time;
@@ -404,7 +362,7 @@ function showSingleBlackmail($id) {
       $singleBlackmailPage += '<button id="delete" type="button" onclick ="deleteBlackmail('+data[0].id+')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-trash" style="color:blue" aria-hidden="true"></span>';
     }
 
-    $("#blackmailDisp").append($singleBlackmailPage);
+    $("#centerDisp").append($singleBlackmailPage);
     if (getTimeRemaining($deadline).total >= 0){
       initializeClock("clockdiv", $deadline);
     }
