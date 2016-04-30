@@ -28,6 +28,15 @@ $(document).ready(function() {
       "startDate": "today"
   });
 
+  $("#viewStats").click(function(){
+    function showAbout(){
+      $("#mainHeader").empty().append('<span class="glyphicon glyphicon-glass" aria-hidden="true"></span> About');
+      $("#centerDisp").empty();
+      var $aboutContents ='<div>Hello!<br><br>BasketballStats is a convenient way to get up to date CSUF Basketball statistics.</div>';
+
+      $("#centerDisp").append($aboutContents);
+    }
+  });
   $("#signup").click(function() {
   $("#signinButton").hide();
   $("#registerButton").show();
@@ -122,6 +131,7 @@ $(document).ready(function() {
 
 
 
+
   $("#logOut").click(function() {
     $currentUser = "";
     $signup.style.display = "list-item";
@@ -140,9 +150,9 @@ $(document).ready(function() {
   $("#home").click(function() {
   });
 
-  //$("#about").click(function() {
-  //  showAbout();
-  //});
+  $("#about").click(function() {
+    showAbout();
+  });
 
   function showAbout(){
     $("#mainHeader").empty().append('<span class="glyphicon glyphicon-glass" aria-hidden="true"></span> About');
