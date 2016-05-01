@@ -29,19 +29,23 @@ $(document).ready(function() {
   });
 
   $("#viewStats").click(function(){
-    function showAbout(){
-      $("#mainHeader").empty().append('<span class="glyphicon glyphicon-glass" aria-hidden="true"></span> About');
-      $("#centerDisp").empty();
-      var $aboutContents ='<div>Hello!<br><br>BasketballStats is a convenient way to get up to date CSUF Basketball statistics.</div>';
-
-      $("#centerDisp").append($aboutContents);
-    }
+    showStats()
   });
+  function showStats(){
+    $("#mainHeader").empty().append('Cal State Fullerton Men\'s Basketball Statistics');
+    $("#centerDisp").empty();
+    $.get("index.php/pages/loadGameTable", function(data)  {
+      var gameTableData = JSON.decode(data);
+
+    });
+    //$("#centerDisp").append($aboutContents);
+  }
+
   $("#signup").click(function() {
-  $("#signinButton").hide();
-  $("#registerButton").show();
-  $("#registerSignin-title").empty().append("Sign up");
-  $("#registerSignIn").modal();
+    $("#signinButton").hide();
+    $("#registerButton").show();
+    $("#registerSignin-title").empty().append("Sign up");
+    $("#registerSignIn").modal();
   });
 
   $("#registerButton").click(function() {

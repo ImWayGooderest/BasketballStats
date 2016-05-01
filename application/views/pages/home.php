@@ -45,13 +45,6 @@
 
 <div class="container">
   <div class="col-lg-12">
-    <!--<form class="form-inline" role="form" id="viewCodeBlackmail-form">-->
-    <!--<div class="form-group">-->
-    <!--<label for="mycode">Recieved a Blackmail? Enter your code here: </label>-->
-    <!--<input type="text" class="form-control" id="mycode">-->
-    <!--</div>-->
-    <!--<button type="submit" class="btn btn-danger" id="viewCodeBlackmail">View Blackmail</button>-->
-    <!--</form>-->
     <h1 class="page-header" id="mainHeader"><span class="glyphicon glyphicon-envelope " aria-hidden="true"></span>CSUF Basketball Gallery</h1>
   </div>
   <div class="container-fluid" id ="centerDisp"></div>
@@ -65,7 +58,7 @@
   <footer>
     <div class="row">
       <div class="col-lg-12">
-        <p>BlackmailPhotos</p>
+        <p>Cal State Fullerton Basketball Stats</p>
       </div>
     </div>
   </footer>

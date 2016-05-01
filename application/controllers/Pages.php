@@ -17,12 +17,13 @@ class Pages extends CI_Controller {
 
   public function loadGameTable()
   {
+    $result = [];
     $this->load->library(array('form_validation'));
     $test = $this->db->query('SELECT * FROM `game`');
     foreach ($test->result_array() as $row)
     {
       $result[] = $row;
     }
-    return $result;
+    echo json_encode($result);
   }
 }
