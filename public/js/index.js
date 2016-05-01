@@ -32,7 +32,7 @@ $(document).ready(function() {
     $("#addStatsModal").modal();
   });
 
-  $("#create-form").submit(function() {
+  $("#addStats-form").submit(function() {
     ////disable the default form submission
     //event.preventDefault();
     //var formData = new FormData(this);
@@ -66,35 +66,62 @@ $(document).ready(function() {
   function showStats(){
     $("#mainHeader").empty().append('Cal State Fullerton Men\'s Basketball Statistics');
 
-    $.get("index.php/pages/loadGameTable", function(data)  {
-      var gameTableData = JSON.parse(data);
-      $("#centerDisp").empty().append(
-        '<table id="gameTable" class="display" cellspacing="0" width="100%">\
-          <thead>\
-              <tr>\
-                <th>Date</th>\
-                <th>Opponent</th>\
-                <th>Position</th>\
-                <th>FG</th>\
-                <th>PCT</th>\
-                <th>3PT</th>\
-                <th>PCT</th>\
-                <th>FT</th>\
-                <th>PCT</th>\
-                <th>OFF</th>\
-                <th>DEF</th>\
-                <th>REB</th>\
-                <th>AST</th>\
-                <th>TO</th>\
-                <th>STL</th>\
-                <th>BLK</th>\
-                <th>PF</th>\
-                <th>PTS</th>\
-              </tr>\
-          </thead>\
-        </table>');
+    //$.get("index.php/pages/loadGameTable", function(data)  {
+    //  var gameTableData = JSON.parse(data);
+    $("#centerDisp").empty().append(
+      '<table id="gameTable" class="display" cellspacing="0" width="100%">\
+        <thead>\
+            <tr>\
+              <th>Date</th>\
+              <th>Opponent</th>\
+              <th>Position</th>\
+              <th>FG</th>\
+              <th>PCT</th>\
+              <th>3PT</th>\
+              <th>PCT</th>\
+              <th>FT</th>\
+              <th>PCT</th>\
+              <th>OFF</th>\
+              <th>DEF</th>\
+              <th>REB</th>\
+              <th>AST</th>\
+              <th>TO</th>\
+              <th>STL</th>\
+              <th>BLK</th>\
+              <th>PF</th>\
+              <th>PTS</th>\
+            </tr>\
+        </thead>\
+      </table>');
+    $('#gameTable').DataTable( {
+      "processing": true,
+      "serverSide": true,
+      "ajax": {
+        "url": "index.php/pages/loadGameTable"
+      },
+      "columns": [
+        { "data": "date" },
+        { "data": "opponent" },
+        { "data": "score" },
+        { "data": "field_goals" },
+        { "data": "field_goals_percentage" },
+        { "data": "3pointers"},
+        { "data": "3pointers_percentage" },
+        { "data": "free_throws" },
+        { "data": "free_throws_percentage" },
+        { "data": "offensive_rebounds" },
+        { "data": "defensive_rebounds" },
+        { "data": "total_rebounds"},
+        { "data": "assists" },
+        { "data": "turnovers" },
+        { "data": "steals" },
+        { "data": "blocks" },
+        { "data": "personal_fouls" },
+        { "data": "points"}
+      ]
+    } );
 
-    });
+    //});
     //$("#centerDisp").append($aboutContents);
   }
 
