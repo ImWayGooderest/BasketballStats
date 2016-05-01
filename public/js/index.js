@@ -28,14 +28,71 @@ $(document).ready(function() {
       "startDate": "today"
   });
 
+  $("#addStats").click(function(){
+    $("#addStatsModal").modal();
+  });
+
+  $("#create-form").submit(function() {
+    ////disable the default form submission
+    //event.preventDefault();
+    //var formData = new FormData(this);
+    //$.ajax({
+    //  url: "/upload",
+    //  type: "POST",
+    //  data: formData,
+    //  async: false,
+    //  cache: false,
+    //  contentType: false,
+    //  processData: false,
+    //  success: function () {
+    //    $("#createModal").modal("hide");
+    //    $("#title").val("");
+    //    $("#recName").val("");
+    //    $("#recEmail").val("");
+    //    $("#date").val("");
+    //    $("#time").val("");
+    //    $("#demands").val("");
+    //    $("#imageUpload").val("");
+    //    makeMyBlackmails();
+    //    return false;
+    //  }
+    //});
+  });
+
+
   $("#viewStats").click(function(){
     showStats()
   });
   function showStats(){
     $("#mainHeader").empty().append('Cal State Fullerton Men\'s Basketball Statistics');
-    $("#centerDisp").empty();
+
     $.get("index.php/pages/loadGameTable", function(data)  {
-      var gameTableData = JSON.decode(data);
+      var gameTableData = JSON.parse(data);
+      $("#centerDisp").empty().append(
+        '<table id="gameTable" class="display" cellspacing="0" width="100%">\
+          <thead>\
+              <tr>\
+                <th>Date</th>\
+                <th>Opponent</th>\
+                <th>Position</th>\
+                <th>FG</th>\
+                <th>PCT</th>\
+                <th>3PT</th>\
+                <th>PCT</th>\
+                <th>FT</th>\
+                <th>PCT</th>\
+                <th>OFF</th>\
+                <th>DEF</th>\
+                <th>REB</th>\
+                <th>AST</th>\
+                <th>TO</th>\
+                <th>STL</th>\
+                <th>BLK</th>\
+                <th>PF</th>\
+                <th>PTS</th>\
+              </tr>\
+          </thead>\
+        </table>');
 
     });
     //$("#centerDisp").append($aboutContents);
@@ -81,32 +138,7 @@ $(document).ready(function() {
 
 
 
-  $("#create-form").submit(function() {
-    //disable the default form submission
-    event.preventDefault();
-    var formData = new FormData(this);
-    $.ajax({
-      url: "/upload",
-      type: "POST",
-      data: formData,
-      async: false,
-      cache: false,
-      contentType: false,
-      processData: false,
-      success: function () {
-        $("#createModal").modal("hide");
-        $("#title").val("");
-        $("#recName").val("");
-        $("#recEmail").val("");
-        $("#date").val("");
-        $("#time").val("");
-        $("#demands").val("");
-        $("#imageUpload").val("");
-        makeMyBlackmails();
-        return false;
-      }
-    });
-  });
+
 
   $("#signinButton").click(function() {
     var signinData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));//converts form data to associative array

@@ -97,7 +97,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="addStatsModal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -105,8 +105,7 @@
         <h4 class="modal-title" id="create-title">Create Blackmail</h4>
       </div>
       <div class="modal-body">
-        <p class="bg-danger" id="createBlackmail-errorMsg"></p>
-        <form role="form" method="POST" action="upload/" id="create-form" enctype="multipart/form-data" onsubmit="return false">
+        <form role="form" id="addStats-form">
           <div class="form-group">
             <label for="title">Title of blackmail</label>
             <input type="text" class="form-control"
@@ -137,17 +136,11 @@
             <input type="text" class="form-control"
                    id="demands" placeholder="Demands" name="demands"/>
           </div>
-          <div class="form-group">
-            <label for="imageUpload">Upload Blackmail Photo</label>
-            <input id="imageUpload" type="file" name="image" class="file" accept="image/jpeg"><br/>
-            <input type="hidden" name="creator" id="creator">
-            <input type="hidden" name="randomCode" id="randomCode">
-          </div>
         </form>
       </div>
-      <div class="modal-footer" id="createBlackmail-footer">
+      <div class="modal-footer" id="addStats-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" id="create" form="create-form" value="Create">
+        <button type="submit" class="btn btn-default">Submit</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
