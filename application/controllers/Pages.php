@@ -31,14 +31,15 @@ class Pages extends CI_Controller {
   public function submitGameStats()
   {
     $gameStats = $this->input->post();
+
     if ($gameStats){
+      $gameStats['field_goals_percentage'] = round(($gameStats['field_goals']/$gameStats['field_goals_attempted'])*100, 1);
+      $gameStats['3pointers_percentage'] = round(($gameStats['3pointers']/$gameStats['3pointers_attempted'])*100, 1);
+      $gameStats['free_throws_percentage'] = round(($gameStats['free_throws']/$gameStats['free_throws_attempted'])*100, 1);
+      $gameStats['total_rebounds'] = $gameStats['offensive_rebounds'] + $gameStats['defensive_rebounds'];
       $this->db->insert('game',$gameStats);
 
       echo $this->db->affected_rows();
     }
-//    $this->load->library(array('datatables'));
-//    $this->datatables
-//      ->from('player');
-//    echo $this->datatables->generate();
   }
 }

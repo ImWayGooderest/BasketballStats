@@ -46,7 +46,7 @@ $(document).ready(function() {
       processData: false,
       success: function (data) {
         //clear all the values in addStats
-        $("#addStatsModal").modal();
+        $("#addStatsModal").modal("hide");
         $(".form-control").val("");
         return false;
       }
