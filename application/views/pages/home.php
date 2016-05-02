@@ -258,84 +258,89 @@
       <div class="modal-body">
         <form role="form" id="addStats-form">
           <div class="form-group">
-            <label for="date">Date</label>
+            <label for="player_id">Player Number</label>
             <input type="text" class="form-control"
-                   id="date" placeholder="yyyy-mm-dd" name="date"/>
+                   id="player_id" placeholder="00" name="player_id"/>
           </div>
           <div class="form-group">
-            <label for="opponent">Opponent</label>
+            <label for="game_id">Game Number</label>
             <input type="text" class="form-control"
-                   id="opponent" placeholder="Opponent Name" name="opponent"/>
+                   id="game_id" placeholder="00" name="game_id"/>
           </div>
           <div class="form-group">
-            <label for="score">Score</label>
+            <label for="minutes">Minutes Played</label>
             <input type="text" class="form-control"
-                   id="score" placeholder="W, 100-50" name="score"/>
+                   id="minutes" placeholder="00" name="minutes"/>
           </div>
           <div class="form-group">
-            <label for="FG">Field Goals</label>
+            <label for="field_goals_made">Field Goals</label>
             <input type="text" class="form-control"
-                   id="FG" placeholder="00" name="FG"/>
+                   id="field_goals_made" placeholder="00" name="field_goals_made"/>
           </div>
           <div class="form-group">
-            <label for="FGA">Field Goals Attempted</label>
+            <label for="field_goals_attempted">Field Goals Attempted</label>
             <input type="text" class="form-control"
-                   id="FGA" placeholder="00" name="FGA"/>
+                   id="field_goals_attempted" placeholder="00" name="field_goals_attempted"/>
           </div>
           <div class="form-group">
-            <label for="3P">3 Pointers</label>
+            <label for="3pointers_made">3 Pointers</label>
             <input type="text" class="form-control"
-                   id="3P" placeholder="00" name="3P"/>
+                   id="3pointers_made" placeholder="00" name="3pointers_made"/>
           </div>
           <div class="form-group">
-            <label for="3PA">3 Pointers Attempted</label>
+            <label for="3pointers_attempted">3 Pointers Attempted</label>
             <input type="text" class="form-control"
-                   id="3PA" placeholder="00" name="3PA"/>
+                   id="3pointers_attempted" placeholder="00" name="3pointers_attempted"/>
           </div>
           <div class="form-group">
-            <label for="FT">Free Throws</label>
+            <label for="free_throws_made">Free Throws</label>
             <input type="text" class="form-control"
-                   id="FT" placeholder="00" name="FT"/>
+                   id="free_throws_made" placeholder="00" name="free_throws_made"/>
           </div>
           <div class="form-group">
-            <label for="FTA">Free Throws Attempted</label>
+            <label for="free_throws_attempted">Free Throws Attempted</label>
             <input type="text" class="form-control"
-                   id="FTA" placeholder="00" name="FTA"/>
+                   id="free_throws_attempted" placeholder="00" name="free_throws_attempted"/>
           </div>
           <div class="form-group">
-            <label for="OR">Offensive Rebounds</label>
+            <label for="offensive_rebounds">Offensive Rebounds</label>
             <input type="text" class="form-control"
-                   id="OR" placeholder="00" name="OR"/>
+                   id="offensive_rebounds" placeholder="00" name="offensive_rebounds"/>
           </div>
           <div class="form-group">
-            <label for="DR">Defensive Rebounds</label>
+            <label for="defensive_rebounds">Defensive Rebounds</label>
             <input type="text" class="form-control"
-                   id="DR" placeholder="00" name="DR"/>
+                   id="defensive_rebounds" placeholder="00" name="defensive_rebounds"/>
           </div>
           <div class="form-group">
-            <label for="AST">Assists</label>
+            <label for="rebounds">Total Rebounds</label>
             <input type="text" class="form-control"
-                   id="AST" placeholder="00" name="AST"/>
+                   id="rebounds" placeholder="00" name="rebounds"/>
           </div>
           <div class="form-group">
-            <label for="TO">Turnovers</label>
+            <label for="assists">Assists</label>
             <input type="text" class="form-control"
-                   id="TO" placeholder="00" name="TO"/>
+                   id="assists" placeholder="00" name="assists"/>
           </div>
           <div class="form-group">
-            <label for="steal">Steals</label>
+            <label for="steals">Steals</label>
             <input type="text" class="form-control"
-                   id="steal" placeholder="00" name="steal"/>
+                   id="steals" placeholder="00" name="steals"/>
           </div>
           <div class="form-group">
-            <label for="block">Blocks</label>
+            <label for="blocks">Blocks</label>
             <input type="text" class="form-control"
-                   id="block" placeholder="00" name="block"/>
+                   id="blocks" placeholder="00" name="blocks"/>
           </div>
           <div class="form-group">
-            <label for="PF">Personal Fouls</label>
+            <label for="turnovers">Turnovers</label>
             <input type="text" class="form-control"
-                   id="PF" placeholder="00" name="PF"/>
+                   id="turnovers" placeholder="00" name="turnovers"/>
+          </div>
+          <div class="form-group">
+            <label for="personal_fouls">Personal Fouls</label>
+            <input type="text" class="form-control"
+                   id="personal_fouls" placeholder="00" name="personal_fouls"/>
           </div>
           <div class="form-group">
             <label for="points">Points</label>
@@ -344,9 +349,9 @@
           </div>
         </form>
       </div>
-      <div class="modal-footer" id="addStats-footer">
+      <div class="modal-footer" id="addPlayerStats-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <input type="submit" class="btn btn-primary" form="addPlayerStats-form" id="submitPlayerStatsButton">
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
