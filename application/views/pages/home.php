@@ -256,7 +256,7 @@
         <h4 class="modal-title" id="create-title">Add Player Stats for game</h4>
       </div>
       <div class="modal-body">
-        <form role="form" id="addStats-form">
+        <form role="form" id="addPlayerStats-form">
           <div class="form-group">
             <label for="player_id">Player</label>
             <select class="form-control" id="player_id">
@@ -311,11 +311,6 @@
             <label for="defensive_rebounds">Defensive Rebounds</label>
             <input type="text" class="form-control"
                    id="defensive_rebounds" placeholder="00" name="defensive_rebounds"/>
-          </div>
-          <div class="form-group">
-            <label for="rebounds">Total Rebounds</label>
-            <input type="text" class="form-control"
-                   id="rebounds" placeholder="00" name="rebounds"/>
           </div>
           <div class="form-group">
             <label for="assists">Assists</label>

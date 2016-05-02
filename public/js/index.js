@@ -11,6 +11,7 @@ $(document).ready(function() {
 
   var initialLoad = false;
   if(!initialLoad){ //what to do on initial load
+    showHome();
     initialLoad = true;
   }
 
@@ -86,6 +87,8 @@ $(document).ready(function() {
   $("#addPlayerStats-form").submit(function(){
     event.preventDefault();
     var formData = new FormData(this);
+    formData.append('player_id', $('#player_id option:selected').val());
+    formData.append('game_id', $('#game_id option:selected').val());
     $.ajax({
       url: "index.php/pages/submitPlayerStats",
       type: "POST",
@@ -296,8 +299,76 @@ $(document).ready(function() {
   });
 
   $("#home").click(function() {
+    showHome()
   });
 
+  function showHome() {
+    $("#mainHeader").empty().append('CSUF Basketball Gallery');
+    $("#centerDisp").empty();
+    var $galleryContents ='<div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">\
+      <a class="thumbnail" href="#">\
+      <img class="img-responsive" src="http://placehold.it/400x300" alt="">\
+      </a>\
+      </div>\
+      </div>';
+
+    $("#centerDisp").append($galleryContents);
+  }
   $("#about").click(function() {
     showAbout();
   });

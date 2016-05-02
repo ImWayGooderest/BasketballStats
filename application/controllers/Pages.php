@@ -52,7 +52,7 @@ class Pages extends CI_Controller {
       $playerStats['3pointers_percentage'] = round(($playerStats['3pointers']/$playerStats['3pointers_attempted'])*100, 1);
       $playerStats['free_throws_percentage'] = round(($playerStats['free_throws']/$playerStats['free_throws_attempted'])*100, 1);
       $playerStats['total_rebounds'] = $playerStats['offensive_rebounds'] + $playerStats['defensive_rebounds'];
-      $this->db->insert('game',$playerStats);
+      $this->db->insert('stats',$playerStats);
 
       echo $this->db->affected_rows();
     }
