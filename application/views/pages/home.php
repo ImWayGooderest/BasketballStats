@@ -32,7 +32,9 @@
         <li class="active" id="home"><a href="#">Home</a></li>
         <li><a href="#" id="signup">Sign Up!</a></li>
         <li><a href="#" id="signin">Sign In</a></li>
-        <li><a href="#" id="addStats">Add Basketball Statistics</a></li>
+        <li><a href="#" id="addStats">Add Basketball Game</a></li>
+        <li><a href="#" id="addPlayer">Add Player</a></li>
+        <li><a href="#" id="addPlayerStats">Add Player Stats</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Basketball Statistics<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -201,6 +203,145 @@
       <div class="modal-footer" id="addStats-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <input type="submit" class="btn btn-primary" form="addStats-form" id="submitStatsButton">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="addPlayerModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="create-title">Add Player</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" id="addStats-form">
+          <div class="form-group">
+            <label for="number">Player Number</label>
+            <input type="text" class="form-control"
+                   id="number" placeholder="00" name="number"/>
+          </div>
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control"
+                   id="first_name" placeholder="First Name" name="first_name"/>
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control"
+                   id="last_name" placeholder="Last Name" name="last_name"/>
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer" id="addStats-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="addPlayerStatsModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="create-title">Add Game</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" id="addStats-form">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="text" class="form-control"
+                   id="date" placeholder="yyyy-mm-dd" name="date"/>
+          </div>
+          <div class="form-group">
+            <label for="opponent">Opponent</label>
+            <input type="text" class="form-control"
+                   id="opponent" placeholder="Opponent Name" name="opponent"/>
+          </div>
+          <div class="form-group">
+            <label for="score">Score</label>
+            <input type="text" class="form-control"
+                   id="score" placeholder="W, 100-50" name="score"/>
+          </div>
+          <div class="form-group">
+            <label for="FG">Field Goals</label>
+            <input type="text" class="form-control"
+                   id="FG" placeholder="00" name="FG"/>
+          </div>
+          <div class="form-group">
+            <label for="FGA">Field Goals Attempted</label>
+            <input type="text" class="form-control"
+                   id="FGA" placeholder="00" name="FGA"/>
+          </div>
+          <div class="form-group">
+            <label for="3P">3 Pointers</label>
+            <input type="text" class="form-control"
+                   id="3P" placeholder="00" name="3P"/>
+          </div>
+          <div class="form-group">
+            <label for="3PA">3 Pointers Attempted</label>
+            <input type="text" class="form-control"
+                   id="3PA" placeholder="00" name="3PA"/>
+          </div>
+          <div class="form-group">
+            <label for="FT">Free Throws</label>
+            <input type="text" class="form-control"
+                   id="FT" placeholder="00" name="FT"/>
+          </div>
+          <div class="form-group">
+            <label for="FTA">Free Throws Attempted</label>
+            <input type="text" class="form-control"
+                   id="FTA" placeholder="00" name="FTA"/>
+          </div>
+          <div class="form-group">
+            <label for="OR">Offensive Rebounds</label>
+            <input type="text" class="form-control"
+                   id="OR" placeholder="00" name="OR"/>
+          </div>
+          <div class="form-group">
+            <label for="DR">Defensive Rebounds</label>
+            <input type="text" class="form-control"
+                   id="DR" placeholder="00" name="DR"/>
+          </div>
+          <div class="form-group">
+            <label for="AST">Assists</label>
+            <input type="text" class="form-control"
+                   id="AST" placeholder="00" name="AST"/>
+          </div>
+          <div class="form-group">
+            <label for="TO">Turnovers</label>
+            <input type="text" class="form-control"
+                   id="TO" placeholder="00" name="TO"/>
+          </div>
+          <div class="form-group">
+            <label for="steal">Steals</label>
+            <input type="text" class="form-control"
+                   id="steal" placeholder="00" name="steal"/>
+          </div>
+          <div class="form-group">
+            <label for="block">Blocks</label>
+            <input type="text" class="form-control"
+                   id="block" placeholder="00" name="block"/>
+          </div>
+          <div class="form-group">
+            <label for="PF">Personal Fouls</label>
+            <input type="text" class="form-control"
+                   id="PF" placeholder="00" name="PF"/>
+          </div>
+          <div class="form-group">
+            <label for="points">Points</label>
+            <input type="text" class="form-control"
+                   id="points" placeholder="00" name="points"/>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" id="addStats-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default">Submit</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

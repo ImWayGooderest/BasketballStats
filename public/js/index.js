@@ -27,6 +27,14 @@ $(document).ready(function() {
     $("#addStatsModal").modal();
   });
 
+  $("#addPlayer").click(function(){
+    $("#addPlayerModal").modal();
+  });
+
+  $("#addPlayerStats").click(function(){
+    $("#addPlayerStatsModal").modal();
+  });
+
   $("#addStats-form").submit(function() {
     event.preventDefault();
     var formData = new FormData(this);
