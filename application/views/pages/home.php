@@ -32,9 +32,14 @@
         <li class="active" id="home"><a href="#">Home</a></li>
         <li><a href="#" id="signup">Sign Up!</a></li>
         <li><a href="#" id="signin">Sign In</a></li>
-        <li><a href="#" id="addStats">Add Basketball Game</a></li>
-        <li><a href="#" id="addPlayer">Add Player</a></li>
-        <li><a href="#" id="addPlayerStats">Add Player Stats</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" id="addStats">Basketball Game</a></li>
+            <li><a href="#" id="addPlayer">Player</a></li>
+            <li><a href="#" id="addPlayerStats">Player Stats</a></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Basketball Statistics<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -216,7 +221,7 @@
         <h4 class="modal-title" id="create-title">Add Player</h4>
       </div>
       <div class="modal-body">
-        <form role="form" id="addStats-form">
+        <form role="form" id="addPlayer-form">
           <div class="form-group">
             <label for="number">Player Number</label>
             <input type="text" class="form-control"
@@ -235,9 +240,9 @@
           
         </form>
       </div>
-      <div class="modal-footer" id="addStats-footer">
+      <div class="modal-footer" id="addPlayer-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <input type="submit" class="btn btn-primary" form="addPlayer-form" id="submitPlayerButton">
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

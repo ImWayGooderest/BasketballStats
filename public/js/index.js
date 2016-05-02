@@ -53,6 +53,10 @@ $(document).ready(function() {
     });
   });
 
+  $("addPlayer-form").submit(function(){
+
+  });
+
 
   $("#viewGameStats").click(function(){
     showGameStats()
