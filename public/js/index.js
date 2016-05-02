@@ -54,7 +54,39 @@ $(document).ready(function() {
   });
 
   $("addPlayer-form").submit(function(){
+    event.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+      url: "index.php/pages/addNewPlayer",
+      type: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        //clear all the values in addStats
+        $("#addPlayerModal").modal("hide");
+        $(".form-control").val("");
+        return false;
+      }
+    });
+  });
 
+  $("addPlayerStats-form").submit(function(){
+    event.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+      url: "index.php/pages/submitPlayerStats",
+      type: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        //clear all the values in addStats
+        $("#addPlayerStatsModal").modal("hide");
+        $(".form-control").val("");
+        return false;
+      }
+    });
   });
 
 
