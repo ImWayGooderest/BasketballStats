@@ -28,3 +28,4 @@ user_guide/*
 *.sublime-project
 
 test.sql
+csuf_basketball.sql
