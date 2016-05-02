@@ -130,69 +130,82 @@ $(document).ready(function() {
   }
 
   $("#viewPlayerStats").click(function(){
-    showGameStats()
+    showPlayerStats()
   });
   function showPlayerStats(){
     $("#mainHeader").empty().append('Cal State Fullerton Men\'s Basketball Statistics');
     $("#centerDisp").empty().append(
-      '<table id="gameTable" class="display" cellspacing="0" width="100%">\
+      '<table id="playerTable" class="display" cellspacing="0" width="100%">\
         <thead>\
             <tr>\
-              <th></th>\
-              <th>Date</th>\
-              <th>Opponent</th>\
-              <th>Position</th>\
-              <th>FG</th>\
-              <th>PCT</th>\
-              <th>3PT</th>\
-              <th>PCT</th>\
-              <th>FT</th>\
-              <th>PCT</th>\
+              <th>#</th>\
+              <th>First Name</th>\
+              <th>Last Name</th>\
+              <th>GP</th>\
+              <th>GS</th>\
+              <th>MIN</th>\
+              <th>MIN/G</th>\
+              <th>FGM</th>\
+              <th>FGA</th>\
+              <th>FG%</th>\
+              <th>3PTM</th>\
+              <th>3PTA</th>\
+              <th>3PT%</th>\
               <th>OFF</th>\
               <th>DEF</th>\
               <th>REB</th>\
+              <th>REB/G</th>\
+              <th>PF</th>\
+              <th>DIS</th>\
               <th>AST</th>\
               <th>TO</th>\
+              <th>AST/TO</th>\
               <th>STL</th>\
               <th>BLK</th>\
-              <th>PF</th>\
+              <th>PTS</th>\
+              <th>PTS/G</th>\
+              <th>PTS/40</th>\
               <th>PTS</th>\
             </tr>\
         </thead>\
       </table>');
-    $('#gameTable').DataTable( {
+    $('#playerTable').DataTable( {
       "processing": true,
       "serverSide": true,
       "ajax": {
-        "url": "index.php/pages/loadGameTable"
+        "url": "index.php/pages/loadPlayerTable"
       },
       "columns": [
-        { "data": "id" },
-        { "data": "date" },
-        { "data": "opponent" },
-        { "data": "score" },
-        { "data": "field_goals" },
-        { "data": "field_goals_percentage" },
-        { "data": "3pointers"},
-        { "data": "3pointers_percentage" },
-        { "data": "free_throws" },
-        { "data": "free_throws_percentage" },
+        { "data": "number" },
+        { "data": "first_name" },
+        { "data": "last_name" },
+        { "data": "games" },
+        { "data": "games_started" },
+        { "data": "minutes" },
+        { "data": "minutes_per_game"},
+        { "data": "field_goals_made" },
+        { "data": "field_goals_attemped" },
+        { "data": "free_throws_made" },
+        { "data": "free_throws_attempted" },
+        { "data": "free_throw_percent" },
+        { "data": "total_rebounds"},
+        { "data": "3pointers_made" },
+        { "data": "3pointers_attempted" },
+        { "data": "3pointer_percent" },
         { "data": "offensive_rebounds" },
         { "data": "defensive_rebounds" },
         { "data": "total_rebounds"},
+        { "data": "rebounds_per_game" },
+        { "data": "personal_fouls" },
+        { "data": "disqualifications"},
         { "data": "assists" },
         { "data": "turnovers" },
+        { "data": "assist_turnover_ratio" },
         { "data": "steals" },
         { "data": "blocks" },
-        { "data": "personal_fouls" },
-        { "data": "points"}
-      ],
-      "columnDefs": [
-        {
-          "targets": [ 0 ],
-          "visible": false,
-          "searchable": false
-        }
+        { "data": "points"},
+        { "data": "points_per_game" },
+        { "data": "points_per_40" }
       ]
     } );
 

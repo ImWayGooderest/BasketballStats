@@ -17,18 +17,16 @@ class Pages extends CI_Controller {
 
   public function loadGameTable()
   {
-//    $result = [];
     $this->load->library(array('datatables'));
-//    $test = $this->db->query('SELECT * FROM `game`');
-//    foreach ($test->result_array() as $row)
-//    {
-//      $result[] = $row;
-//    }
-//    echo json_encode($result);
     $this->datatables
       ->from('game');
-//    $data['result'] = $this->datatables->generate();
-//    $this->load->view('ajax', $data);
+    echo $this->datatables->generate();
+  }
+  public function loadPlayerTable()
+  {
+    $this->load->library(array('datatables'));
+    $this->datatables
+      ->from('player');
     echo $this->datatables->generate();
   }
 }
