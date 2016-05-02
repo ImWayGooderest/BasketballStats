@@ -68,4 +68,15 @@ class Pages extends CI_Controller {
       echo $this->db->affected_rows();
     }
   }
+
+  public function getPlayersAndGames()
+  {
+    $this->db->select('id, date, opponent');
+    $games = $this->db->get('game');
+    $games = $games->result_array();
+    $this->db->select('number, first_name, last_name');
+    $players = $this->db->get('player');
+    $players = $players->result_array();
+    echo json_encode(array("games" => $games, "players" => $players));
+  }
 }

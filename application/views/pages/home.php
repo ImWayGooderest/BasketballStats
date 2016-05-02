@@ -253,19 +253,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="create-title">Add Game</h4>
+        <h4 class="modal-title" id="create-title">Add Player Stats for game</h4>
       </div>
       <div class="modal-body">
         <form role="form" id="addStats-form">
           <div class="form-group">
-            <label for="player_id">Player Number</label>
-            <input type="text" class="form-control"
-                   id="player_id" placeholder="00" name="player_id"/>
+            <label for="player_id">Player</label>
+            <select class="form-control" id="player_id">
+            </select>
           </div>
           <div class="form-group">
-            <label for="game_id">Game Number</label>
-            <input type="text" class="form-control"
-                   id="game_id" placeholder="00" name="game_id"/>
+            <label for="game_id">Game</label>
+            <select class="form-control" id="game_id">
+            </select>
           </div>
           <div class="form-group">
             <label for="minutes">Minutes Played</label>

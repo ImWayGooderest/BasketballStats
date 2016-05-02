@@ -32,7 +32,19 @@ $(document).ready(function() {
   });
 
   $("#addPlayerStats").click(function(){
-    $("#addPlayerStatsModal").modal();
+    $.get("index.php/pages/getPlayersAndGames", function(data) {
+      $("#player_id").empty();
+      $("#game_id").empty();
+      data = JSON.parse(data);
+      $.each(data['games'], function(index, value) {
+        $("#game_id").append('<option value="' + value.id + '">' + value.opponent + ' ' + value.date + '</option>"');
+      });
+      $.each(data['players'], function(index, value) {
+        $("#player_id").append('<option value="' + value.number + '">' + value.number + ' ' + value.first_name + ' ' + value.last_name + '</option>"');
+      });
+      $("#addPlayerStatsModal").modal();
+    });
+
   });
 
   $("#addStats-form").submit(function() {
@@ -254,26 +266,6 @@ $(document).ready(function() {
 
   $("#registerButton").click(function() {
     var registrationData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));  //returns form values as key value pairs
-
-    $.get("http://localhost:3000/accounts", {"username": registrationData.email,"password": registrationData.password}, function(data) {
-
-      if (data.length <= 0) { // if account doesn't exist
-        $.post("http://localhost:3000/accounts", {
-          "username": registrationData.email,
-          "password": registrationData.password
-        }, function() {
-          //put an alert in here for now
-          $("#registerSignIn").modal("hide");
-          $("#inputEmail").val("");
-          $("#inputPassword").val("");
-        });
-      }
-      else {
-        $("#errorMsg").text("Sign up failed. Account exists, please try again!");
-        $errorMsg.style.display = "block";
-      }
-
-    });
   });
 
   $("#signin").click(function() {
@@ -289,41 +281,14 @@ $(document).ready(function() {
 
   $("#signinButton").click(function() {
     var signinData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));//converts form data to associative array
-      $.get("server.php", {"username": signinData.email,"password": signinData.password}, function(data) {
 
-        if (data.length <= 0) { // if account doesn't exist
-          $("#errorMsg").text("Account does not exist. Please try again!");
-          $errorMsg.style.display = "block"; //show error message
-        }
-        else { // if account exist
-          $("#registerSignIn").modal("hide");
-          $signup.style.display = "none";
-          $signin.style.display = "none";
-          $createBlackmail.style.display = "list-item";
-          $viewBlackmail.style.display = "list-item";
-          $logOut.style.display = "list-item";
-
-          var $greeting = '<span class="text-primary" id="greeting">Hello, ' + data[0].username + '!</li>';
-          $currentUser = data[0].username;
-          $("#navbar").append($greeting);
-          makeMyBlackmails();
-        }
-
-      });
   });
 
 
 
 
   $("#logOut").click(function() {
-    $currentUser = "";
-    $signup.style.display = "list-item";
-    $signin.style.display = "list-item";
-    $createBlackmail.style.display = "none";
-    $viewBlackmail.style.display = "none";
-    $logOut.style.display = "none";
-    $("#greeting").remove();
-    makeGallery();
+
   });
 
   $("#brand").click(function() {//clicking on title
