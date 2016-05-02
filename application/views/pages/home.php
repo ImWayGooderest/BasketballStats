@@ -22,7 +22,7 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <img src="public/images/header_tablet.png">
+  <img src="public/images/header_tablet.png" id="headerImg">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" id="brand" href="#"> BasketballStats </a>
@@ -40,12 +40,7 @@
             <li><a href="#" id="viewPlayerStats">View Player Stats</a></li>
           </ul>
         </li>
-
-
-
-
         <li><a href="#" id="about">About</a></li>
-        <li><a href="#" id="contact">Contact</a></li>
         <!--<li><a href="#" id="logOut">Log Out</a></li>-->
       </ul>
     </div>
@@ -55,7 +50,7 @@
 
 <div class="container">
   <div class="col-lg-12">
-    <h1 class="page-header" id="mainHeader"><span class="glyphicon glyphicon-envelope " aria-hidden="true"></span>CSUF Basketball Gallery</h1>
+    <h1 class="page-header" id="mainHeader">CSUF Basketball Gallery</h1>
   </div>
   <div class="container-fluid" id ="centerDisp"></div>
 
@@ -115,7 +110,7 @@
         <h4 class="modal-title" id="create-title">Add Game</h4>
       </div>
       <div class="modal-body">
-        <form role="form" id="addStats-form">
+        <form method="post" action="index.php/pages/submitGameStats" role="form" id="addStats-form">
           <div class="form-group">
             <label for="date">Date</label>
             <input type="text" class="form-control"
@@ -134,67 +129,67 @@
           <div class="form-group">
             <label for="FG">Field Goals</label>
             <input type="text" class="form-control"
-                   id="FG" placeholder="00" name="FG"/>
+                   id="FG" placeholder="00" name="field_goals"/>
           </div>
           <div class="form-group">
             <label for="FGA">Field Goals Attempted</label>
             <input type="text" class="form-control"
-                   id="FGA" placeholder="00" name="FGA"/>
+                   id="FGA" placeholder="00" name="field_goals_attempted"/>
           </div>
           <div class="form-group">
             <label for="3P">3 Pointers</label>
             <input type="text" class="form-control"
-                   id="3P" placeholder="00" name="3P"/>
+                   id="3P" placeholder="00" name="3pointers"/>
           </div>
           <div class="form-group">
             <label for="3PA">3 Pointers Attempted</label>
             <input type="text" class="form-control"
-                   id="3PA" placeholder="00" name="3PA"/>
+                   id="3PA" placeholder="00" name="3pointers_attempted"/>
           </div>
           <div class="form-group">
             <label for="FT">Free Throws</label>
             <input type="text" class="form-control"
-                   id="FT" placeholder="00" name="FT"/>
+                   id="FT" placeholder="00" name="free_throws"/>
           </div>
           <div class="form-group">
             <label for="FTA">Free Throws Attempted</label>
             <input type="text" class="form-control"
-                   id="FTA" placeholder="00" name="FTA"/>
+                   id="FTA" placeholder="00" name="free_throws_attempted"/>
           </div>
           <div class="form-group">
             <label for="OR">Offensive Rebounds</label>
             <input type="text" class="form-control"
-                   id="OR" placeholder="00" name="OR"/>
+                   id="OR" placeholder="00" name="offensive_rebounds"/>
           </div>
           <div class="form-group">
             <label for="DR">Defensive Rebounds</label>
             <input type="text" class="form-control"
-                   id="DR" placeholder="00" name="DR"/>
+                   id="DR" placeholder="00" name="defensive_rebounds"/>
           </div>
           <div class="form-group">
             <label for="AST">Assists</label>
             <input type="text" class="form-control"
-                   id="AST" placeholder="00" name="AST"/>
+                   id="AST" placeholder="00" name="assists"/>
           </div>
           <div class="form-group">
             <label for="TO">Turnovers</label>
             <input type="text" class="form-control"
-                   id="TO" placeholder="00" name="TO"/>
+                   id="TO" placeholder="00" name="turnovers"/>
           </div>
           <div class="form-group">
             <label for="steal">Steals</label>
             <input type="text" class="form-control"
-                   id="steal" placeholder="00" name="steal"/>
+                   id="steal" placeholder="00" name="steals"/>
           </div>
           <div class="form-group">
             <label for="block">Blocks</label>
             <input type="text" class="form-control"
-                   id="block" placeholder="00" name="block"/>
+                   id="block" placeholder="00" name="blocks"/>
           </div>
           <div class="form-group">
             <label for="PF">Personal Fouls</label>
             <input type="text" class="form-control"
-                   id="PF" placeholder="00" name="PF"/>
+                   id="PF" placeholder="00" name="personal_fouls"/>
           </div>
           <div class="form-group">
             <label for="points">Points</label>
@@ -205,7 +200,7 @@
       </div>
       <div class="modal-footer" id="addStats-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <input type="submit" class="btn btn-primary" form="addStats-form" id="submitStatsButton">
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

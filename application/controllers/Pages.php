@@ -8,11 +8,8 @@ class Pages extends CI_Controller {
       // Whoops, we don't have a page for that!
       show_404();
     }
-    $data['title'] = ucfirst($page); // Capitalize the first letter
 
-//    $this->load->view('templates/header', $data);
-    $this->load->view('pages/'.$page, $data);
-//    $this->load->view('templates/footer', $data);
+    $this->load->view('pages/'.$page);
   }
 
   public function loadGameTable()
@@ -22,11 +19,26 @@ class Pages extends CI_Controller {
       ->from('game');
     echo $this->datatables->generate();
   }
+
   public function loadPlayerTable()
   {
     $this->load->library(array('datatables'));
     $this->datatables
       ->from('player');
     echo $this->datatables->generate();
+  }
+
+  public function submitGameStats()
+  {
+    $gameStats = $this->input->post();
+    if ($gameStats){
+      $this->db->insert('game',$gameStats);
+
+      echo $this->db->affected_rows();
+    }
+//    $this->load->library(array('datatables'));
+//    $this->datatables
+//      ->from('player');
+//    echo $this->datatables->generate();
   }
 }

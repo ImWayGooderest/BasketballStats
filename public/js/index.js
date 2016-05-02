@@ -14,14 +14,9 @@ $(document).ready(function() {
     initialLoad = true;
   }
 
-  // initialize input widgets first
-  $("#createModal .time").timepicker({
-      "timeFormat": "h:i a",
-      "disableTextInput": true
-  });
 
-  $("#createModal .date").datepicker({
-      "format": "mm/dd/yyyy",
+  $("#addStatsModal .date").datepicker({
+      "format": "yyyy-mm-dd",
       "autoclose": true,
       "todayHighlight": true,
       "todayBtn": "linked",
@@ -33,30 +28,21 @@ $(document).ready(function() {
   });
 
   $("#addStats-form").submit(function() {
-    ////disable the default form submission
-    //event.preventDefault();
-    //var formData = new FormData(this);
-    //$.ajax({
-    //  url: "/upload",
-    //  type: "POST",
-    //  data: formData,
-    //  async: false,
-    //  cache: false,
-    //  contentType: false,
-    //  processData: false,
-    //  success: function () {
-    //    $("#createModal").modal("hide");
-    //    $("#title").val("");
-    //    $("#recName").val("");
-    //    $("#recEmail").val("");
-    //    $("#date").val("");
-    //    $("#time").val("");
-    //    $("#demands").val("");
-    //    $("#imageUpload").val("");
-    //    makeMyBlackmails();
-    //    return false;
-    //  }
-    //});
+    event.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+      url: "index.php/pages/submitGameStats",
+      type: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        //clear all the values in addStats
+        $("#addStatsModal").modal();
+        $(".form-control").val("");
+        return false;
+      }
+    });
   });
 
 
@@ -177,6 +163,7 @@ $(document).ready(function() {
       "ajax": {
         "url": "index.php/pages/loadPlayerTable"
       },
+      "scrollX" : true,
       "columns": [
         { "data": "number" },
         { "data": "first_name" },
@@ -314,21 +301,6 @@ $(document).ready(function() {
     $("#centerDisp").append($aboutContents);
   }
 
-  $("#contact").click(function() {
-    showContact();
-  });
-
-  function showContact(){
-    $("#mainHeader").empty().append('<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> Contact');
-    $("#centerDisp").empty();
-    var $contactInfo ="<div>Please address all complaints and legal threats to:<br><br>";
-    $contactInfo += "Former Vice President Dick Cheney<br>";
-    $contactInfo += "The American Enterprise Institute<br>";
-    $contactInfo += "1150 Seventeenth Street, N.W.<br>";
-    $contactInfo += "Washington, DC 20036</div>";
-
-    $("#centerDisp").append($contactInfo);
-  }
 
 
 
