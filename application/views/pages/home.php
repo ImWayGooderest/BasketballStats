@@ -102,39 +102,94 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="create-title">Create Blackmail</h4>
+        <h4 class="modal-title" id="create-title">Add Game</h4>
       </div>
       <div class="modal-body">
         <form role="form" id="addStats-form">
           <div class="form-group">
-            <label for="title">Title of blackmail</label>
+            <label for="date">Date</label>
             <input type="text" class="form-control"
-                   id="title" placeholder="Enter Title" name="title"/>
+                   id="date" placeholder="yyyy-mm-dd" name="date"/>
           </div>
           <div class="form-group">
-            <label for="recName">Name of blackmail recipient</label>
+            <label for="opponent">Opponent</label>
             <input type="text" class="form-control"
-                   id="recName" placeholder="Recipient Name" name="recName"/>
+                   id="opponent" placeholder="Opponent Name" name="opponent"/>
           </div>
           <div class="form-group">
-            <label for="recEmail">Email address of blackmail recipient</label>
-            <input type="email" class="form-control"
-                   id="recEmail" placeholder="Recipient Email" name="recEmail"/>
-          </div>
-          <div class="form-group">
-            <label for="date">Set release date</label>
-            <input type="text" class="form-control date"
-                   id="date" placeholder="dd/mm/yyyy" name="date"/>
-          </div>
-          <div class="form-group">
-            <label for="time">Set release time</label>
-            <input type="text" class="form-control time"
-                   id="time" placeholder="12:00 am" name="time"/>
-          </div>
-          <div class="form-group">
-            <label for="demands">Enter your demands</label>
+            <label for="score">Score</label>
             <input type="text" class="form-control"
-                   id="demands" placeholder="Demands" name="demands"/>
+                   id="score" placeholder="W, 100-50" name="score"/>
+          </div>
+          <div class="form-group">
+            <label for="FG">Field Goals</label>
+            <input type="text" class="form-control"
+                   id="FG" placeholder="00" name="FG"/>
+          </div>
+          <div class="form-group">
+            <label for="FGA">Field Goals Attempted</label>
+            <input type="text" class="form-control"
+                   id="FGA" placeholder="00" name="FGA"/>
+          </div>
+          <div class="form-group">
+            <label for="3P">3 Pointers</label>
+            <input type="text" class="form-control"
+                   id="3P" placeholder="00" name="3P"/>
+          </div>
+          <div class="form-group">
+            <label for="3PA">3 Pointers Attempted</label>
+            <input type="text" class="form-control"
+                   id="3PA" placeholder="00" name="3PA"/>
+          </div>
+          <div class="form-group">
+            <label for="FT">Free Throws</label>
+            <input type="text" class="form-control"
+                   id="FT" placeholder="00" name="FT"/>
+          </div>
+          <div class="form-group">
+            <label for="FTA">Free Throws Attempted</label>
+            <input type="text" class="form-control"
+                   id="FTA" placeholder="00" name="FTA"/>
+          </div>
+          <div class="form-group">
+            <label for="OR">Offensive Rebounds</label>
+            <input type="text" class="form-control"
+                   id="OR" placeholder="00" name="OR"/>
+          </div>
+          <div class="form-group">
+            <label for="DR">Defensive Rebounds</label>
+            <input type="text" class="form-control"
+                   id="DR" placeholder="00" name="DR"/>
+          </div>
+          <div class="form-group">
+            <label for="AST">Assists</label>
+            <input type="text" class="form-control"
+                   id="AST" placeholder="00" name="AST"/>
+          </div>
+          <div class="form-group">
+            <label for="TO">Turnovers</label>
+            <input type="text" class="form-control"
+                   id="TO" placeholder="00" name="TO"/>
+          </div>
+          <div class="form-group">
+            <label for="steal">Steals</label>
+            <input type="text" class="form-control"
+                   id="steal" placeholder="00" name="steal"/>
+          </div>
+          <div class="form-group">
+            <label for="block">Blocks</label>
+            <input type="text" class="form-control"
+                   id="block" placeholder="00" name="block"/>
+          </div>
+          <div class="form-group">
+            <label for="PF">Personal Fouls</label>
+            <input type="text" class="form-control"
+                   id="PF" placeholder="00" name="PF"/>
+          </div>
+          <div class="form-group">
+            <label for="points">Points</label>
+            <input type="text" class="form-control"
+                   id="points" placeholder="00" name="points"/>
           </div>
         </form>
       </div>
