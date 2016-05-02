@@ -148,6 +148,9 @@ $(document).ready(function() {
               <th>FGM</th>\
               <th>FGA</th>\
               <th>FG%</th>\
+              <th>FTM</th>\
+              <th>FTA</th>\
+              <th>FT%</th>\
               <th>3PTM</th>\
               <th>3PTA</th>\
               <th>3PT%</th>\
@@ -165,7 +168,6 @@ $(document).ready(function() {
               <th>PTS</th>\
               <th>PTS/G</th>\
               <th>PTS/40</th>\
-              <th>PTS</th>\
             </tr>\
         </thead>\
       </table>');
@@ -184,7 +186,7 @@ $(document).ready(function() {
         { "data": "minutes" },
         { "data": "minutes_per_game"},
         { "data": "field_goals_made" },
-        { "data": "field_goals_attemped" },
+        { "data": "field_goals_attempted" },
         { "data": "free_throws_made" },
         { "data": "free_throws_attempted" },
         { "data": "free_throw_percent" },
