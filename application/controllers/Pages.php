@@ -42,4 +42,30 @@ class Pages extends CI_Controller {
       echo $this->db->affected_rows();
     }
   }
+
+  public function submitPlayerStats()//todo
+  {
+    $playerStats = $this->input->post();
+
+    if ($playerStats){
+      $playerStats['field_goals_percentage'] = round(($playerStats['field_goals']/$playerStats['field_goals_attempted'])*100, 1);
+      $playerStats['3pointers_percentage'] = round(($playerStats['3pointers']/$playerStats['3pointers_attempted'])*100, 1);
+      $playerStats['free_throws_percentage'] = round(($playerStats['free_throws']/$playerStats['free_throws_attempted'])*100, 1);
+      $playerStats['total_rebounds'] = $playerStats['offensive_rebounds'] + $playerStats['defensive_rebounds'];
+      $this->db->insert('game',$playerStats);
+
+      echo $this->db->affected_rows();
+    }
+  }
+
+  public function addNewPlayer()
+  {
+    $newPlayer = $this->input->post();
+
+    if ($newPlayer){
+      $this->db->insert('game',$newPlayer);
+
+      echo $this->db->affected_rows();
+    }
+  }
 }
