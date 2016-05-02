@@ -63,7 +63,7 @@ class Pages extends CI_Controller {
     $newPlayer = $this->input->post();
 
     if ($newPlayer){
-      $this->db->insert('game',$newPlayer);
+      $this->db->insert('player',$newPlayer);
 
       echo $this->db->affected_rows();
     }

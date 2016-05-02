@@ -53,7 +53,7 @@ $(document).ready(function() {
     });
   });
 
-  $("addPlayer-form").submit(function(){
+  $("#addPlayer-form").submit(function(){
     event.preventDefault();
     var formData = new FormData(this);
     $.ajax({
@@ -71,7 +71,7 @@ $(document).ready(function() {
     });
   });
 
-  $("addPlayerStats-form").submit(function(){
+  $("#addPlayerStats-form").submit(function(){
     event.preventDefault();
     var formData = new FormData(this);
     $.ajax({
