@@ -138,7 +138,7 @@ $(document).ready(function() {
       </table>');
     $('#gameTable').DataTable( {
       "processing": true,
-      "serverSide": true,
+      "serverSide": false,
       "ajax": {
         "url": "index.php/pages/loadGameTable"
       },
@@ -178,7 +178,7 @@ $(document).ready(function() {
     showPlayerStats()
   });
   function showPlayerStats(){
-    $("#mainHeader").empty().append('Cal State Fullerton Men\'s Basketball Statistics');
+    $("#mainHeader").empty().append('Cal State Fullerton Men\'s Basketball Player Statistics');
     $("#centerDisp").empty().append(
       '<table id="playerTable" class="display" cellspacing="0" width="100%">\
         <thead>\
@@ -218,7 +218,7 @@ $(document).ready(function() {
       </table>');
     $('#playerTable').DataTable( {
       "processing": true,
-      "serverSide": true,
+      "serverSide": false,
       "ajax": {
         "url": "index.php/pages/loadPlayerTable"
       },
@@ -295,11 +295,11 @@ $(document).ready(function() {
   });
 
   $("#brand").click(function() {//clicking on title
-
+    showHome();
   });
 
   $("#home").click(function() {
-    showHome()
+    showHome();
   });
 
   function showHome() {

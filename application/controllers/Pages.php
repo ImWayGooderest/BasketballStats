@@ -79,4 +79,15 @@ class Pages extends CI_Controller {
     $players = $players->result_array();
     echo json_encode(array("games" => $games, "players" => $players));
   }
+
+  public function getGamePlayerStats() {
+    $this->load->library(array('datatables'));
+    $newPlayer = $this->input->post();
+
+    if ($newPlayer) {
+      $this->datatables
+        ->from('player');
+      echo $this->datatables->generate();
+    }
+  }
 }
