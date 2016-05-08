@@ -1,13 +1,6 @@
-var $currentUser = "";
-
 $(document).ready(function() {
   "use strict";
 
-  var $signup = document.getElementById("signup");
-  var $signin =  document.getElementById("signin");
-  var $logOut = document.getElementById("logOut");
-  var $greeting = document.getElementById("greeting");
-  var $errorMsg = document.getElementById("errorMsg");
 
   var initialLoad = false;
   if(!initialLoad){ //what to do on initial load
