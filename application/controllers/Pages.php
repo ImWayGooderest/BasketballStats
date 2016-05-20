@@ -85,7 +85,11 @@ class Pages extends CI_Controller {
 
       echo $this->db->affected_rows();
 
-      $this->db->where('number', $playerStats['player_id']);
+      //$this->load->library(array('datatables'));
+      //$this->datatables
+      //->from('player')
+      //->where('number', <playerNumber>);
+      $this->db->where('number', 15);
       $current = $this->db->get('player');
       $data = $current->result_array();
       $data['games']++;
