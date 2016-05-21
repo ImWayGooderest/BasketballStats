@@ -46,8 +46,14 @@ $(document).ready(function() {
       processData: false,
       success: function (data) {
         //clear all the values in addStats
-        $("#addStatsModal").modal("hide");
-        $(".form-control").val("");
+        if(data == 1){
+          $("#addStatsModal").modal("hide");
+          $(".form-control").val("");
+        } else {
+          var errors = JSON.parse(data);
+          alert(errors);
+        }
+
         return false;
       }
     });
@@ -63,9 +69,15 @@ $(document).ready(function() {
       contentType: false,
       processData: false,
       success: function (data) {
-        //clear all the values in addStats
-        $("#addPlayerModal").modal("hide");
-        $(".form-control").val("");
+        if(data == 1){
+          //clear all the values in addStats
+          $("#addPlayerModal").modal("hide");
+          $(".form-control").val("");
+        } else {
+          var errors = JSON.parse(data);
+          alert(errors);
+        }
+
         return false;
       }
     });
@@ -83,9 +95,14 @@ $(document).ready(function() {
       contentType: false,
       processData: false,
       success: function (data) {
-        //clear all the values in addStats
-        $("#addPlayerStatsModal").modal("hide");
-        $(".form-control").val("");
+        if(data == 1){
+          //clear all the values in addStats
+          $("#addPlayerStatsModal").modal("hide");
+          $(".form-control").val("");
+        } else {
+          var errors = JSON.parse(data);
+          alert(errors);
+        }
         return false;
       }
     });
