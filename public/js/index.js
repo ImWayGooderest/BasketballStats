@@ -1,3 +1,5 @@
+var $currentUsername = "";
+
 $(document).ready(function() {
   "use strict";
 
@@ -262,6 +264,16 @@ $(document).ready(function() {
 
   $("#registerButton").click(function() {
     var registrationData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));  //returns form values as key value pairs
+    $.post("index.php/pages/register", {
+      "username": registrationData.email.toLowerCase(),
+      "password": registrationData.password
+    }, function (data) {
+      if (data.length != 0) {
+        //
+      } else {
+        //
+      }
+    });
   });
 
   $("#signin").click(function() {
@@ -277,7 +289,17 @@ $(document).ready(function() {
 
   $("#signinButton").click(function() {
     var signinData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));//converts form data to associative array
-
+    var signInData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));  //returns form values as key value pairs
+    $.post("index.php/pages/signIn", {
+      "username": signInData.email.toLowerCase(),
+      "password": signInData.password
+    }, function (data) {
+      if (data.length != 0) {
+        //
+      } else {
+        //
+      }
+    });
   });
 
 
