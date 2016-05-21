@@ -77,7 +77,7 @@ $db['default'] = array(
 	'dsn'	=> 'mysql:host=localhost;dbname=csuf_basketball',
 	'hostname' => '',
 	'username' => 'root',
-	'password' => 'tacobell',
+	'password' => '',
 	'database' => '',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
