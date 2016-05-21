@@ -320,7 +320,10 @@ $(document).ready(function() {
 
 
   $("#logOut").click(function() {
-
+    $("#adminAddStats").hide();
+    $("#logOut").hide();
+    $("#signup").show();
+    $("#signin").show();
   });
 
   $("#brand").click(function() {//clicking on title
