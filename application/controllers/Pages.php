@@ -165,13 +165,17 @@ class Pages extends CI_Controller {
     $current = $this->db->get('Users');
     $data = $current->result_array();
 
+    $repeat = false;
+
     foreach ($data as $value) {
       if ($value['username'] == $newUser['username']){
-        //Break and return an error "Username Already Exists"
+        $repeat = true;
       }
     }
-    //If username doesnt already exist
-    $this->db->insert('users',$newUser);
+    if ($repeat == false) {
+      $this->db->insert('users',$newUser);
+    }
+    echo !$repeat;
   }
 
   public function signIn() {
@@ -180,13 +184,14 @@ class Pages extends CI_Controller {
     $current = $this->db->get('Users');
     $data = $current->result_array();
 
+    $valid = false;
+
     foreach ($data as $value) {
       if ($value['username'] == $user['username'] && $value['password'] == $user['password']) {
-        //Break and return success?
+        $valid = true;
       }
     }
-    //If user and password not found
-    //Return error "Invalid username or password"
+    echo $valid;
   }
 
   
