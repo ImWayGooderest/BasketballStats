@@ -159,5 +159,35 @@ class Pages extends CI_Controller {
     }
   }
 
+  public function register() {
+    $newUser = $this->input->post();
+
+    $current = $this->db->get('Users');
+    $data = $current->result_array();
+
+    foreach ($data as $value) {
+      if ($value['username'] == $newUser['username']){
+        //Break and return an error "Username Already Exists"
+      }
+    }
+    //If username doesnt already exist
+    $this->db->insert('users',$newUser);
+  }
+
+  public function signIn() {
+    $user = $this->input->post();
+
+    $current = $this->db->get('Users');
+    $data = $current->result_array();
+
+    foreach ($data as $value) {
+      if ($value['username'] == $user['username'] && $value['password'] == $user['password']) {
+        //Break and return success?
+      }
+    }
+    //If user and password not found
+    //Return error "Invalid username or password"
+  }
+
   
 }
