@@ -189,9 +189,14 @@ class Pages extends CI_Controller {
     foreach ($stats as $key => $value) {
       if ($key == "date") {
         $dateParts = explode("-", $value);
-        if (!checkdate($dateParts[1], $dateParts[2], $dateParts[0])) {
+        if(count($dateParts) == 3) {
+          if (!checkdate($dateParts[1], $dateParts[2], $dateParts[0])) {
+            array_push($errors, "Invalid date format!");
+          }
+        } else {
           array_push($errors, "Invalid date format!");
         }
+
       } else if ($key == "score") {
         $scoreParts = explode(",", $value);
         if (strtoupper($scoreParts[0]) == "W" || strtoupper($scoreParts[0]) == "L") {
