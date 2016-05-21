@@ -81,7 +81,7 @@ class Pages extends CI_Controller {
       //$playerStats['3pointers_percentage'] = round(($playerStats['3pointers']/$playerStats['3pointers_attempted'])*100, 1);
       //$playerStats['free_throws_percentage'] = round(($playerStats['free_throws']/$playerStats['free_throws_attempted'])*100, 1);
       $playerStats['rebounds'] = $playerStats['offensive_rebounds'] + $playerStats['defensive_rebounds'];
-      //$this->db->insert('stats',$playerStats);
+      $this->db->insert('stats',$playerStats);
 
       echo $this->db->affected_rows();
 
@@ -89,39 +89,39 @@ class Pages extends CI_Controller {
       //$this->datatables
       //->from('player')
       //->where('number', <playerNumber>);
-      $this->db->where('number', 15);
+      $this->db->where('number', $playerStats['player_id']);
       $current = $this->db->get('player');
       $data = $current->result_array();
-      $data['games']++;
-      $data['minutes'] += $playerStats['minutes'];
-      $data['minutes_per_game'] = round(($data['minutes']/$data['games']),1);
-      $data['field_goals_made'] += $playerStats['field_goals_made'];
-      $data['field_goals_attempted'] += $playerStats['field_goals_attempted'];
-      $data['field_goals_percent'] = round(($data['field_goals_made']/$data['field_goals_attempted']*100),1);
-      $data['free_throws_made'] += $playerStats['free_throws_made'];
-      $data['free_throws_attempted'] += $playerStats['free_throws_attempted'];
-      $data['free_throws_percent'] = round(($data['free_throws_made']/$data['free_throws_attempted']*100),1);
-      $data['3pointers_made'] += $playerStats['3pointers_made'];
-      $data['3pointers_attempted'] += $playerStats['3pointers_attempted'];
-      $data['3pointers_percent'] = round(($data['3pointers_made']/$data['3pointers_attempted']*100),1);
-      $data['offensive_rebounds'] += $playerStats['offensive_rebounds'];
-      $data['defensive_rebounds'] += $playerStats['defensive_rebounds'];
-      $data['total_rebounds'] += $playerStats['rebounds'];
-      $data['rebounds_per_game'] = round(($data['total_rebounds']/$data['games']),1);
-      $data['personal_fouls'] += $playerStats['personal_fouls'];
-      $data['assists'] += $playerStats['assists'];
-      $data['turnovers'] += $playerStats['turnovers'];
-      $data['assist_turnover_ratio'] = round(($data['assists']/$data['turnovers']),1);
-      $data['steals'] += $playerStats['steals'];
-      $data['blocks'] += $playerStats['blocks'];
-      $data['points'] += $playerStats['points'];
-      $data['points_per_game'] = round(($data['points']/$data['games']),1);
-      $data['points_per_40'] = round($data['points']/(round($data['minutes']/40,1)),1);
+      $data[0]['games']++;
+      $data[0]['minutes'] += $playerStats['minutes'];
+      $data[0]['minutes_per_game'] = round(($data[0]['minutes']/$data[0]['games']),1);
+      $data[0]['field_goals_made'] += $playerStats['field_goals_made'];
+      $data[0]['field_goals_attempted'] += $playerStats['field_goals_attempted'];
+      $data[0]['field_goal_percent'] = round(($data[0]['field_goals_made']/$data[0]['field_goals_attempted']*100),1);
+      $data[0]['free_throws_made'] += $playerStats['free_throws_made'];
+      $data[0]['free_throws_attempted'] += $playerStats['free_throws_attempted'];
+      $data[0]['free_throw_percent'] = round(($data[0]['free_throws_made']/$data[0]['free_throws_attempted']*100),1);
+      $data[0]['3pointers_made'] += $playerStats['3pointers_made'];
+      $data[0]['3pointers_attempted'] += $playerStats['3pointers_attempted'];
+      $data[0]['3pointer_percent'] = round(($data[0]['3pointers_made']/$data[0]['3pointers_attempted']*100),1);
+      $data[0]['offensive_rebounds'] += $playerStats['offensive_rebounds'];
+      $data[0]['defensive_rebounds'] += $playerStats['defensive_rebounds'];
+      $data[0]['total_rebounds'] += $playerStats['rebounds'];
+      $data[0]['rebounds_per_game'] = round(($data[0]['total_rebounds']/$data[0]['games']),1);
+      $data[0]['personal_fouls'] += $playerStats['personal_fouls'];
+      $data[0]['assists'] += $playerStats['assists'];
+      $data[0]['turnovers'] += $playerStats['turnovers'];
+      $data[0]['assist_turnover_ratio'] = round(($data[0]['assists']/$data[0]['turnovers']),1);
+      $data[0]['steals'] += $playerStats['steals'];
+      $data[0]['blocks'] += $playerStats['blocks'];
+      $data[0]['points'] += $playerStats['points'];
+      $data[0]['points_per_game'] = round(($data[0]['points']/$data[0]['games']),1);
+      $data[0]['points_per_40'] = round($data[0]['points']/(round($data[0]['minutes']/40,1)),1);
       if ($playerStats['personal_fouls'] == 5){
         $data['disqualifications']++;
       }
-      $this->db->update('player',$data);
-
+      $this->db->update('player',$data[0], "number = ". $playerStats['player_id']);
+      $test = 0;
       //updatePlayer($playerStats);
     }
   }

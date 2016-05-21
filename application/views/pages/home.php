@@ -6,6 +6,7 @@
   <script src="public/js/jquery-2.0.3.min.js"></script>
   <script src="public/js/jquery-ui.js"></script>
   <link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
   <link href="public/css/index.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
   <script src="public/js/underscore-min.js"></script>
