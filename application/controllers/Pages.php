@@ -199,14 +199,21 @@ class Pages extends CI_Controller {
 
       } else if ($key == "score") {
         $scoreParts = explode(",", $value);
-        if (strtoupper($scoreParts[0]) == "W" || strtoupper($scoreParts[0]) == "L") {
-          $scoreParts = explode("-", $scoreParts[1]);
-          if (!(is_numeric($scoreParts[0]) && is_numeric($scoreParts[1]))) {
-            array_push($errors, "Invalid score format!");
+        if(count($scoreParts) == 2) {
+          if (strtoupper($scoreParts[0]) == "W" || strtoupper($scoreParts[0]) == "L") {
+            $scoreParts = explode("-", $scoreParts[1]);
+            if (count($scoreParts) == 2) {
+              if (!(is_numeric($scoreParts[0]) && is_numeric($scoreParts[1]))) {
+                array_push($errors, "Invalid score format!");
+              }
+            } else {
+              array_push($errors, "Invalid score format!");
+            }
           }
         } else {
           array_push($errors, "Invalid score format!");
         }
+
       } else if ($key == "opponent") {
         if ($value == "") {
           array_push($errors, "Opponent must not be empty!");
