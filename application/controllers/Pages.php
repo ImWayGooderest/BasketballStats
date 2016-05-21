@@ -85,10 +85,7 @@ class Pages extends CI_Controller {
 
       echo $this->db->affected_rows();
 
-      //$this->load->library(array('datatables'));
-      //$this->datatables
-      //->from('player')
-      //->where('number', <playerNumber>);
+
       $this->db->where('number', $playerStats['player_id']);
       $current = $this->db->get('player');
       $data = $current->result_array();
@@ -121,8 +118,7 @@ class Pages extends CI_Controller {
         $data['disqualifications']++;
       }
       $this->db->update('player',$data[0], "number = ". $playerStats['player_id']);
-      $test = 0;
-      //updatePlayer($playerStats);
+
     }
   }
 
@@ -161,8 +157,8 @@ class Pages extends CI_Controller {
 
   public function register() {
     $newUser = $this->input->post();
-
-    $current = $this->db->get('Users');
+    $newUser["password"] = password_hash($newUser["password"], PASSWORD_DEFAULT);
+    $current = $this->db->get('users');
     $data = $current->result_array();
 
     $repeat = false;
@@ -181,13 +177,13 @@ class Pages extends CI_Controller {
   public function signIn() {
     $user = $this->input->post();
 
-    $current = $this->db->get('Users');
+    $current = $this->db->get('users');
     $data = $current->result_array();
 
     $valid = false;
 
     foreach ($data as $value) {
-      if ($value['username'] == $user['username'] && $value['password'] == $user['password']) {
+      if ($value['username'] == $user['username'] && password_verify($user['password'], $value['password'])) {
         $valid = true;
       }
     }

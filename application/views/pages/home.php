@@ -31,9 +31,9 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" id="navigationBar">
         <li class="active" id="home"><a href="#">Home</a></li>
-        <li><a href="#" id="signup">Sign Up!</a></li>
-        <li><a href="#" id="signin">Sign In</a></li>
-        <li class="dropdown">
+        <li><a href="#" class="logged-in" id="signup">Sign Up!</a></li>
+        <li><a href="#" class="logged-in" id="signin">Sign In</a></li>
+        <li class="dropdown" id="adminAddStats" style="display: none;">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#" id="addStats">Basketball Game</a></li>
@@ -49,7 +49,7 @@
           </ul>
         </li>
         <li><a href="#" id="about">About</a></li>
-        <!--<li><a href="#" id="logOut">Log Out</a></li>-->
+        <li><a href="#" id="logOut">Log Out</a></li>
       </ul>
     </div>
   </div>

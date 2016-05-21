@@ -7,17 +7,9 @@ $(document).ready(function() {
   var initialLoad = false;
   if(!initialLoad){ //what to do on initial load
     showHome();
+    $("#logOut").hide();
     initialLoad = true;
   }
-
-
-  $("#addStatsModal .date").datepicker({
-      "format": "yyyy-mm-dd",
-      "autoclose": true,
-      "todayHighlight": true,
-      "todayBtn": "linked",
-      "startDate": "today"
-  });
 
   $("#addStats").click(function(){
     $("#addStatsModal").modal();
@@ -268,12 +260,13 @@ $(document).ready(function() {
       "username": registrationData.email.toLowerCase(),
       "password": registrationData.password
     }, function (data) {
-      if (data.length != 0) {
-        //
+      if (data == 1) {
+        $("#signinButton").trigger( "click" );
       } else {
-        //
+        alert("Username is already in use!")
       }
     });
+    $(".logged-in").hide();
   });
 
   $("#signin").click(function() {
@@ -288,16 +281,20 @@ $(document).ready(function() {
 
 
   $("#signinButton").click(function() {
-    var signinData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));//converts form data to associative array
-    var signInData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));  //returns form values as key value pairs
+     var signInData = _.object($("#registerSignIn-form").serializeArray().map(function(v) {return [v.name, v.value];} ));  //returns form values as key value pairs
     $.post("index.php/pages/signIn", {
       "username": signInData.email.toLowerCase(),
       "password": signInData.password
     }, function (data) {
-      if (data.length != 0) {
-        //
+      if (data == 1) {
+        $(".logged-in").hide();
+        $("#adminAddStats").show();
+        $("#logOut").show();
+        $("#registerSignIn").modal("hide");
+        $("#inputEmail").val("");
+        $("#inputPassword").val("");
       } else {
-        //
+        alert("Invalid username/password");
       }
     });
   });
