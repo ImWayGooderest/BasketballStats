@@ -31,6 +31,7 @@ class Pages extends CI_Controller {
   public function submitGameStats()
   {
     $gameStats = $this->input->post();
+    
 
     if ($gameStats){
       $gameStats['field_goals_percentage'] = round(($gameStats['field_goals']/$gameStats['field_goals_attempted'])*100, 1);
@@ -43,34 +44,6 @@ class Pages extends CI_Controller {
     }
   }
 
-  public function updatePlayer($player){
-    //$this->db->where('number', 1);
-    //$current = $this->db->get('player');
-    /*$data = $current->result_array();/*
-    $data['games']++;
-    $data['minutes'] += $player['minutes'];
-    $data['minutes_per_game'] = round(($player['minutes']/$data['games']),1);
-    $data['field_goals_made'] += $player['field_goals_made'];
-    $data['field_goals_attempted'] += $player['field_goals_attempted'];
-    $data['field_goals_percent'] = round(($data['field_goals_made']/$data['field_goals_attempted']*100),1);
-    $data['free_throws_made'] += $player['free_throws_made'];
-    $data['free_throws_attempted'] += $player['free_throws_attempted'];
-    $data['free_throws_percent'] = round(($data['free_throws_made']/$data['free_throws_attempted']*100),1);
-    $data['3pointers_made'] += $player['3pointers_made'];
-    $data['3pointers_attempted'] += $player['3pointers_attempted'];
-    $data['3pointers_percent'] = round(($data['3pointers_made']/$data['3pointers_attempted']*100),1);
-    $data['offensive_rebounds'] += $player['offensive_rebounds'];
-    $data['defensive_rebounds'] += $player['defensive_rebounds'];
-    $data['total_rebounds'] += $player['rebounds'];
-    $data['rebounds_per_game'] = round(($data['total_rebounds']/$data['games']),1);
-    $data['personal_fouls'] += $player['personal_fouls'];
-    $data['steals'] += $player['steals'];
-    $data['blocks'] += $player['blocks'];
-    $data['points'] += $player['points'];
-    $data['points_per_game'] = round(($data['points']/$data['games']),1);
-    $data['points_per_40'] = round($data['points']/(round($data['minutes']/40,1)),1);
-    $this->db->update('player');*/
-  }
 
   public function submitPlayerStats()//todo
   {
